@@ -6,7 +6,7 @@ import (
 	"crypto/elliptic"
 	"encoding/hex"
 	"goRecrypt/curve"
-	"golang.org/x/crypto/sha3"
+	"crypto/sha256"
 	"math/big"
 )
 
@@ -20,7 +20,7 @@ func ConcatBytes(a, b []byte) []byte {
 
 // convert message to hash value
 func Sha3Hash(message []byte) ([]byte, error) {
-	sha := sha3.New256()
+	sha := sha256.New224()
 	_, err := sha.Write(message)
 	if err != nil {
 		return nil, err
